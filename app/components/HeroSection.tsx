@@ -1,5 +1,5 @@
 "use client"; // Add this directive at the top
-import {AboutText, ContactMe, DateComponent, HeroHeading, HeroIntro, HeroPageContent, HeroSubtitle, HeroTitle, HeroWrapper, Overlay} from './styled'
+import {AboutText, DateComponent, HeroHeading, HeroIntro, HeroPageContent, HeroTitle, HeroWrapper} from './styled'
 import {Bebas_Neue} from '@next/font/google'
 
 const heroFont = Bebas_Neue({
