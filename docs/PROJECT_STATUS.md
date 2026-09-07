@@ -71,12 +71,12 @@ Integrate the foundation into the first redesigned hero/project slice, then add 
 
 ## Last updated
 
-2026-09-07T14:34:54Z baseline; foundation reset update at 2026-09-07T14:36:42Z.
+2026-09-07T14:34:54Z baseline; foundation reset update at 2026-09-07T20:10:43+05:30.
 
 ## Change tracking
 
 - Repository: `portfolio-kashif`
 - Branch: `main`
 - Previous committed baseline: `85e098c49ca4a6b9f654a5f5d849423b6742a4d9` (`fix build`)
-- Foundation commit: `1becf92` (`build portfolio foundation`), pushed to `origin/main` at 2026-09-07T14:36:42Z.
-- Current documentation metadata update: pending commit and push.
+- Foundation commit: `1becf92` (`build portfolio foundation`), pushed to `origin/main` at 2026-09-07T20:10:43+05:30.
+- Documentation metadata commit: `b40ed26` (`docs: record foundation push`), pushed to `origin/main` at 2026-09-07T20:12:13+05:30.
