@@ -1,0 +1,18 @@
+# Reference Animation Map
+
+| Component/layer             | Animation                                 | Trigger                          | Implementation evidence                                              | Dependency/status                            |
+| --------------------------- | ----------------------------------------- | -------------------------------- | -------------------------------------------------------------------- | -------------------------------------------- |
+| `main` / hero loader        | Loading class and background/plane reveal | Initial navigation               | Runtime class and computed-style changes                             | GSAP likely; exact call unknown              |
+| Hero `.plane`               | Clip-path diamond expansion               | Page load                        | Runtime clip-path snapshots                                          | GSAP likely; exact dependency not proven     |
+| Hero artwork                | Opacity reveal                            | Page load                        | `.main-bg` opacity 0 -> 1                                            | GSAP likely; exact timeline unknown          |
+| Hero headings               | Typography entrance                       | Page load                        | Hero animation classes and visual state                              | Unknown                                      |
+| Cases image layers          | Vertical image reveal and opacity         | Intersection/scroll              | CSS `translateY(100%)`; IntersectionObserver and intermediate values | CSS plus JS; exact call unknown              |
+| Cases content               | Project open overlay                      | Project image click              | `content--open`, body `no-scroll`, animated back control             | GSAP strongly likely; exact timeline unknown |
+| Cases back control          | Project close                             | Back click                       | `Go Back` button exists; result not isolated                         | Unknown                                      |
+| Awards marquee              | Horizontal repeated text                  | Activation/visibility            | CSS `marquee_a`, 5s/10s linear                                       | CSS keyframes                                |
+| Featured marquee            | Horizontal repeated text                  | Continuous page state            | CSS `marquee_1_1`, 29s linear                                        | CSS keyframes                                |
+| Text line classes           | Horizontal wipe                           | Text reveal/transition           | CSS lineIn/lineOut keyframes                                         | CSS keyframes                                |
+| Simple links                | Opacity fade                              | Hover/focus                      | CSS `.4s` opacity transition                                         | CSS transition                               |
+| Availability pseudo-element | Message fade                              | Hover/focus                      | CSS `.4s ease` opacity                                               | CSS transition                               |
+| WebGL canvas                | 3D/artwork layer                          | Load and possibly scroll/pointer | Canvas, Three.js symbols, WebGL and Draco resources                  | Three.js FOUND; driver unknown               |
+| Footer/parallax layers      | Relative background movement              | Scroll/viewport                  | `parallax` class and fixed background                                | Unknown; do not assume ScrollTrigger         |

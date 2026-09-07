@@ -1,0 +1,24 @@
+:root {
+  --color-background: #000000;
+  --color-surface: #131313;
+  --color-foreground: #f5eee6;
+  --color-muted: rgb(245 238 230 / 0.5);
+  --color-overlay: #f3dbc7;
+  --color-accent: #e59700;
+  --color-border: rgb(245 238 230 / 0.35);
+  --font-display: var(--font-geist-sans), sans-serif;
+  --font-body: var(--font-geist-sans), sans-serif;
+  --space-gutter: 28px;
+  --space-gutter-mobile: 20px;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 400ms;
+  --duration-reveal: 900ms;
+  --duration-page: 2400ms;
+  --content-max-width: 1440px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --space-gutter: var(--space-gutter-mobile);
+  }
+}
