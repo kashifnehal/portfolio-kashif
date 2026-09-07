@@ -1,8 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject } from "@/lib/content";
 import { projects } from "@/data/projects";
+import ProjectDetailHeader from "@/components/projects/detail/ProjectDetailHeader";
+import ProjectDetailHero from "@/components/projects/detail/ProjectDetailHero";
+import ProjectDetailOverview from "@/components/projects/detail/ProjectDetailOverview";
+import ProjectDetailGallery from "@/components/projects/detail/ProjectDetailGallery";
+import ProjectNextFooter from "@/components/projects/detail/ProjectNextFooter";
 
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
@@ -17,36 +20,18 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project) notFound();
 
+  // Calculate Next project for navigation footer
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const nextProject = projects[(currentIndex + 1) % projects.length];
+
   return (
-    <article className="min-h-screen bg-background px-gutter pb-16 pt-[calc(55px+2rem)] text-foreground">
-      <div className="mx-auto max-w-content">
-        <Link
-          className="font-mono text-xs uppercase tracking-[0.14em] text-muted underline underline-offset-4 transition-colors duration-fast hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-          href="/"
-        >
-          ← Back home
-        </Link>
-        <div className="mx-auto mt-16 max-w-5xl">
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-            {project.role.join(" / ")}
-          </p>
-          <h1 className="mt-4 font-display text-[clamp(3rem,10vw,8rem)] font-semibold uppercase leading-[0.88]">
-            {project.title}
-          </h1>
-          <div className="relative mt-12 aspect-video overflow-hidden">
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 80vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-          <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-            {project.summary}
-          </p>
-        </div>
+    <article className="min-h-screen bg-[#0d0d0d] px-gutter pb-24 pt-32 text-[#f5eee6]">
+      <div className="mx-auto max-w-6xl">
+        <ProjectDetailHeader project={project} />
+        <ProjectDetailHero project={project} />
+        <ProjectDetailOverview project={project} />
+        <ProjectDetailGallery project={project} />
+        <ProjectNextFooter nextProject={nextProject} />
       </div>
     </article>
   );

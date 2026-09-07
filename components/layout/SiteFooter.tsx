@@ -2,16 +2,15 @@ import Link from "next/link";
 import { profile } from "@/content/profile";
 
 const socialLinks = [
-  { label: "Twitter", href: "https://twitter.com/bepatrickdavid" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/bepatrickdavid/" },
-  { label: "Behance", href: "https://www.behance.net/bepatrickdavid" },
-  { label: "Dribbble", href: "https://dribbble.com/bepatrickdavid" },
-  { label: "Awwwards", href: "https://www.awwwards.com/bepatrickdavid/" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/kashifnehal" },
+  { label: "GitHub", href: "https://github.com/kashifnehal" },
+  { label: "Behance", href: "https://behance.net/kashifnehal" },
+  { label: "Dribbble", href: "https://dribbble.com/kashifnehal" },
 ] as const;
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-black px-gutter py-8">
+    <footer id="footer" className="border-t border-white/10 bg-black px-gutter py-8">
       <div className="mx-auto flex max-w-content flex-col items-center gap-6 sm:flex-row sm:justify-between font-mono text-xs uppercase tracking-wider text-muted">
         <p>© 2026 {profile.name}. All rights reserved.</p>
 

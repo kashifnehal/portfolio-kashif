@@ -1,13 +1,13 @@
 export const profile = {
-  name: "Patrick David",
+  name: "Kashif Nehal",
   title: "UX/UI Designer, Developer",
   role: "Designer & Developer",
-  location: "Belluno, Italy",
+  location: "Based globally",
   availability: "Available for work",
   shortBio:
-    "I am a developer and UX/UI designer based in Italy. I have many years of experience in consulting in all areas of digital. I love minimal and brutalist design. I love nature, pizza and art.",
-  introHeading: "Hello. I am David",
+    "I am a developer and UX/UI designer. I have years of experience in consulting across all areas of digital. I love crafting minimal and purposeful experiences that communicate with clarity.",
+  introHeading: "Hello. I Am Kashif",
   introBio:
-    "I use my passion and skills to create digital products and experiences. National and international customers rely on me for design, implementation, and management of their digital products. As an independent, I work also with web agencies, companies, startups and individuals to create a blueprint for the digital business. Advisor and partner of some digital and fintech startups. Also, Judge at CSSDA and The Webby.",
-  contactEmail: "hello@patrickdavid.com",
+    "I use my passion and skills to create digital products and experiences. Clients rely on me for design, implementation, and management of their digital products. As an independent, I work with web agencies, companies, startups and individuals to create a blueprint for their digital presence. Advisor and collaborator across design and technology.",
+  contactEmail: "hello@kashifnehal.com",
 } as const;

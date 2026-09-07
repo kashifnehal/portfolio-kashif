@@ -7,7 +7,7 @@ import { useReducedMotion } from "./useReducedMotion";
 type RevealOptions = { y?: number; duration?: number };
 
 export function useReveal<T extends HTMLElement>(
-  ref: React.RefObject<T>,
+  ref: React.RefObject<T | null>,
   { y = 48, duration = 0.9 }: RevealOptions = {},
 ) {
   const reducedMotion = useReducedMotion();
