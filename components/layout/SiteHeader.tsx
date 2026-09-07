@@ -2,9 +2,9 @@ import Link from "next/link";
 import { profile } from "@/content/profile";
 
 const navigation = [
-  { label: "works", href: "#cases" },
-  { label: "about", href: "#intro" },
-  { label: "contact", href: "#footer" },
+  { label: "works", href: "/#cases" },
+  { label: "about", href: "/about" },
+  { label: "contact", href: "/#contact" },
 ] as const;
 
 export default function SiteHeader() {
@@ -16,8 +16,8 @@ export default function SiteHeader() {
       <div className="mx-auto flex h-full max-w-content items-center justify-between">
         <Link
           className="flex items-baseline gap-3 text-foreground transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-          href="#top"
-          aria-label={`${profile.name} — back to top`}
+          href="/"
+          aria-label={`${profile.name} — homepage`}
         >
           <span className="font-serif-accent text-lg font-semibold text-[#f5eee6]">
             {profile.name}

@@ -28,7 +28,7 @@ test.describe("Prompt 15: Comprehensive E2E User Behavior & Error Trapping Suite
     expect(bodyScrollWidth).toBeLessThanOrEqual(1442);
 
     // 3. Navigation links exist and work
-    const worksNav = page.locator('header a[href="#cases"]').first();
+    const worksNav = page.locator('header a[href*="#cases"]').first();
     await expect(worksNav).toBeVisible();
     await worksNav.click();
     await page.waitForTimeout(300);

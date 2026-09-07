@@ -5,10 +5,14 @@ import RecognitionSection from "@/components/sections/RecognitionSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import MarqueeStrip from "@/components/sections/MarqueeStrip";
 import ContactSection from "@/components/sections/ContactSection";
+import { PersonJsonLd } from "@/components/seo/JsonLd";
 
 export default function Home() {
   return (
     <>
+      {/* Structured Data: Person + ProfilePage + WebSite entity graph */}
+      <PersonJsonLd />
+
       {/* 1. Hero */}
       <FoundationHero />
 

@@ -5,9 +5,9 @@ test.describe("Homepage Structure & Navigation", () => {
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: "Primary navigation" });
     await expect(nav).toBeVisible();
-    await expect(nav.getByRole("link", { name: "works" })).toHaveAttribute("href", "#cases");
-    await expect(nav.getByRole("link", { name: "about" })).toHaveAttribute("href", "#intro");
-    await expect(nav.getByRole("link", { name: "contact" })).toHaveAttribute("href", "#footer");
+    await expect(nav.getByRole("link", { name: "works" })).toHaveAttribute("href", "/#cases");
+    await expect(nav.getByRole("link", { name: "about" })).toHaveAttribute("href", "/about");
+    await expect(nav.getByRole("link", { name: "contact" })).toHaveAttribute("href", "/#contact");
   });
 
   test("renders all required homepage sections", async ({ page }) => {

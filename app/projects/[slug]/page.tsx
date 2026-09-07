@@ -22,20 +22,36 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return {};
 
+  const canonicalUrl = `https://kashifnehal.com/projects/${slug}`;
+  const ogImage = project.image.src.startsWith("http")
+    ? project.image.src
+    : `https://kashifnehal.com${project.image.src}`;
+
   return {
     title: project.title,
     description: project.summary || project.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
+      type: "article",
+      url: canonicalUrl,
       title: `${project.title} — Kashif Nehal`,
       description: project.summary || project.description,
       images: [
         {
-          url: project.image.src,
+          url: ogImage,
           width: project.image.width,
           height: project.image.height,
           alt: project.image.alt,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — Kashif Nehal`,
+      description: project.summary || project.description,
+      images: [ogImage],
     },
   };
 }

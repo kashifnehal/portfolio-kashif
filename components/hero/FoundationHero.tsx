@@ -84,11 +84,14 @@ export default function FoundationHero() {
           <span>creative</span>
         </div>
 
-        {/* Main Display Heading matching reference ultra-condensed typography */}
+        {/* Main Display Heading — Kashif Nehal, Designer & Developer */}
         <h1
           id="hero-heading"
           className="mt-1 font-display-condensed text-[clamp(3.5rem,11.5vw,10.5rem)] font-black uppercase leading-[0.82] tracking-tighter text-[#f5eee6] break-words"
         >
+          <span className="block font-mono text-xs font-normal uppercase tracking-[0.35em] text-[#f5eee6]/60 mb-2 not-italic" style={{ fontSize: "clamp(0.6rem, 1.2vw, 0.85rem)", letterSpacing: "0.3em", fontFamily: "inherit" }}>
+            Kashif Nehal
+          </span>
           Designer
           <span className="font-serif-accent text-3xl sm:text-5xl lg:text-6xl font-normal text-[#f3dbc7] italic ml-3 align-baseline">
             &amp;
