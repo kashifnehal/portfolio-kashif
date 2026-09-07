@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Change: Completed Prompt 15 — Comprehensive Automated Browser Test Suite.
+- Reason: Created `tests/e2e/e2e-user-flows.spec.ts` testing user-visible behavior across homepage, navigation, project grid, project opening transitions, project detail pages, direct route loads, refresh, back navigation, rapid click safety, uncaught error/console listener trapping, and deterministic screenshot capture.
+- Files/components affected: `tests/e2e/e2e-user-flows.spec.ts`, `docs/PROJECT_STATUS.md`, `docs/TODO.md`, `docs/CHANGELOG.md`, `docs/testing/BASELINE.md`.
+- Testing performed: `npm run lint` (0 errors), `npm run build` (9 static routes prerendered), `npx playwright test` (72/72 total tests passed across 7 test suites in 14.1s).
+
 - Change: Completed Prompt 14 — Performance and Accessibility Audit.
 - Reason: Audit JavaScript bundle size, image lazy loading, font preloading, ARIA landmarks, single H1 heading hierarchy, contrast, keyboard focus indicators, and `prefers-reduced-motion` compliance.
 - Files/components affected: `tests/e2e/perf-a11y-audit.spec.ts`, `components/motion/useReveal.ts`, `components/projects/ProjectTransitionContext.tsx`, `docs/PROJECT_STATUS.md`, `docs/TODO.md`, `docs/CHANGELOG.md`.
@@ -38,8 +43,3 @@
 - Reason: User-provided screenshot verification revealed that hero layout, fonts, availability graphics, and globe presence differed from reference `https://bepatrickdavid.com/`.
 - Files/components affected: `components/hero/FoundationHero.tsx`, `app/globals.css`, `tests/e2e/compare.spec.ts`, `docs/PROJECT_STATUS.md`, `docs/CHANGELOG.md`.
 - Testing performed: `npm run lint` (0 errors), `npm run build` (clean Turbopack compilation), `BASE_URL=http://localhost:3007 npx playwright test` (14/14 tests passed across desktop and mobile viewports, side-by-side screenshot verification).
-
-- Change: Completed Prompt 8 — Hero and Intro Refinement.
-- Reason: Reproduced exact reference hero artwork background plane, diamond clip-path entrance animation, 8-point spinning star availability widget, display typography choreography (`creative`, `Designer & developer`), and Michelangelo's David 3D model wrapper with handwritten SVG annotation.
-- Files/components affected: `components/hero/FoundationHero.tsx`, `components/sections/IntroSection.tsx`, `content/profile.ts`, `content/projects.ts`, `content/recognition.ts`, `content/services.ts`, `data/projects.ts`, `components/layout/SiteHeader.tsx`, `components/sections/RecognitionSection.tsx`, `components/sections/MarqueeStrip.tsx`, `components/sections/ContactSection.tsx`, `components/layout/SiteFooter.tsx`, `app/page.tsx`, `tests/e2e/foundation.spec.ts`, `tests/e2e/homepage-structure.spec.ts`.
-- Testing performed: `npm run lint` (0 errors), `npm run build` (clean Turbopack compilation), `BASE_URL=http://localhost:3007 npx playwright test` (10/10 tests passed across desktop and mobile viewports).
