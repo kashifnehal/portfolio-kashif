@@ -27,17 +27,13 @@ The requested reference-inspired redesign is not yet implemented. GSAP, ScrollTr
 - Added `assets-required.md` and `responsive-spec.md`, and reconciled earlier design and architecture notes with stronger third-pass evidence.
 - Recorded the third-pass visual/responsive measurements and asset requirements; no application implementation has started.
 - Created `docs/architecture.md` with the proposed portfolio architecture and senior review.
-- Disabled and then removed the root `PortfolioModalBlocker` practice artifact with the deleted legacy component tree.
+- Disabled and removed the root `PortfolioModalBlocker` practice artifact with the deleted legacy component tree.
 - Standardized the declared package manager on npm and added the `test:e2e` Playwright script.
 - Added lifecycle-safe Lenis/GSAP/ScrollTrigger infrastructure, reduced-motion handling, typed project data, project routing, loading/error boundaries, and an isolated optional Three.js hero visual component.
 - Added reusable reveal, fade, slide, and parallax motion hooks with scoped cleanup and reduced-motion handling.
 - Standardized npm as the package manager and removed the stale Yarn lockfile.
 - Added `global.d.ts` to provide the CSS module declaration required by the editor TypeScript service.
 - Replaced the legacy home composition with the foundation-only route and deleted the old components.
-- Removed the deprecated `@next/font` dependency and upgraded Next.js to `14.2.35`.
-- Upgraded Next.js to `16.3.4`, React to `19.2.0`, and ESLint to `9`; migrated route params and lint configuration.
-- Deleted disconnected legacy `app/components` files while preserving `data/` and `public/`.
-- Added `AGENTS.md`, `docs/IMPLEMENTATION_PROMPTS.md`, and canonical placeholder files under `content/`.
 - Upgraded Next.js to `16.3.4`, React to `19.2.0`, and ESLint to `9`; migrated route params and lint configuration.
 - Deleted disconnected legacy `app/components` files while preserving `data/` and `public/`.
 - Added `AGENTS.md`, `docs/IMPLEMENTATION_PROMPTS.md`, and canonical placeholder files under `content/`.
@@ -67,7 +63,7 @@ The requested reference-inspired redesign is not yet implemented. GSAP, ScrollTr
 - Running development and production builds against the same `.next` directory can produce stale generated-chunk errors.
 - Introducing animation libraries without first defining ownership and reduced-motion behavior could create duplicated or inaccessible animation logic.
 - Current image handling may affect performance and accessibility until the hero image is migrated to an appropriate optimized image component.
-- `PortfolioModalBlocker` remains an unused Tyler practice artifact until explicitly removed or repurposed.
+- The Tyler practice modal and its configuration have been removed.
 - The WebGL visual is mounted in the foundation hero but remains a minimal placeholder requiring visual refinement.
 - `npm audit --omit=dev` reports 2 remaining high-severity findings in the Next/PostCSS dependency tree; remediation requires a later major upgrade beyond the current Next 16 line or updated advisory resolution.
 
@@ -86,6 +82,7 @@ Integrate the foundation into the first redesigned hero/project slice, then add 
 - Previous committed baseline: `85e098c49ca4a6b9f654a5f5d849423b6742a4d9` (`fix build`)
 - Foundation commit: `1becf92` (`build portfolio foundation`), pushed to `origin/main` at 2026-09-07T20:10:43+05:30.
 - Documentation metadata commit: `b40ed26` (`docs: record foundation push`), pushed to `origin/main` at 2026-09-07T20:12:13+05:30.
-- Next 16 migration and legacy cleanup: validated; commit ID will be recorded after push.
+- Next 16 migration and legacy cleanup: `11eb0da` (`upgrade to Next 16 and remove legacy code`), pushed to `origin/main` at 2026-09-07T20:35:21+05:30.
+- Final legacy image cleanup and documentation correction: pending commit and push.
 - Prompt roadmap: `docs/IMPLEMENTATION_PROMPTS.md`; execute one prompt at a time and update this documentation before proceeding.
 - Deployment target: Vercel with domain `kashifnehal.com`.

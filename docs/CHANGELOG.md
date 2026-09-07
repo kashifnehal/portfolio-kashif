@@ -2,17 +2,23 @@
 
 ## 2026-09-07
 
+- Change: Removed the last unused image copies from the deleted `app/components` tree and corrected migration bookkeeping.
+- Reason: Complete legacy cleanup without touching `data/` or `public/` assets, and make commit history/status accurate.
+- Files/components affected: `app/components/greek.jpg`, `app/components/heroWrap.jpg`, `docs/PROJECT_STATUS.md`, and `docs/CHANGELOG.md`.
+- Testing performed: `npm run lint`, `npm run build`, `BASE_URL=http://localhost:3007 npm run test:e2e` with 6 tests passing, HTTP 200, and `git diff --check`.
+- Commit: pending final cleanup commit and push.
+
 - Change: Upgraded the project to Next.js `16.3.4`, React `19.2.0`, and ESLint `9`; removed deprecated/unused styled-components and legacy `app/components` code; added centralized `content/` placeholders, `AGENTS.md`, and the implementation prompt roadmap.
 - Reason: Apply the approved framework upgrade and establish the documented one-prompt-at-a-time implementation workflow while preserving `data/` and `public/`.
 - Files/components affected: `package.json`, `package-lock.json`, `next.config.mjs`, `tsconfig.json`, `eslint.config.mjs`, `.eslintrc.json`, `app/projects/[slug]/page.tsx`, deleted `app/components/`, `content/`, `AGENTS.md`, `docs/IMPLEMENTATION_PROMPTS.md`, and associated docs.
 - Testing performed: `npm run lint`, `npm run build`, `BASE_URL=http://localhost:3006 npm run test:e2e` with 6 tests passing, and successful Next 16 server responses on port 3006.
-- Commit: pending validation and push; record the final commit ID after publication.
+- Commit: superseded by final migration commit `11eb0da`.
 
 - Change: Completed Next.js `16.3.4` migration and deleted disconnected legacy `app/components` source while preserving `data/` and `public/`.
 - Reason: Use the approved Next 16/Vercel foundation and remove superseded implementation paths before the prompt-by-prompt UI build.
 - Files/components affected: `package.json`, `package-lock.json`, `next.config.mjs`, `tsconfig.json`, `eslint.config.mjs`, `app/projects/[slug]/page.tsx`, deleted `.eslintrc.json`, deleted `app/portfolioModalConfig.ts`, deleted `app/components/`, `content/`, `AGENTS.md`, and `docs/IMPLEMENTATION_PROMPTS.md`.
 - Testing performed: `npm run lint`, `npm run build`, `BASE_URL=http://localhost:3007 npm run test:e2e` with 6 tests passing, HTTP 200, and clean Next 16 server logs.
-- Commit: pending commit and push.
+- Commit: `11eb0da` at 2026-09-07T20:35:21+05:30.
 
 - Change: Pushed the foundation implementation to `origin/main`.
 - Reason: Publish the completed foundation and documentation baseline.
