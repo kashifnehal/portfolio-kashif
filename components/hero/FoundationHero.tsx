@@ -18,17 +18,16 @@ export default function FoundationHero() {
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-screen flex-col justify-between overflow-hidden bg-[#0d0d0d] px-gutter pb-12 pt-[75px] text-[#f5eee6]"
+      className="relative isolate flex min-h-screen flex-col justify-between overflow-hidden bg-[#0d0d0d] px-gutter pb-12 pt-[75px] text-[#f5eee6] max-w-full"
       aria-labelledby="hero-heading"
     >
       {/* Background artwork plane matching reference image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden max-w-full">
         <div
-          className={`absolute inset-0 transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
-            isLoaded
-              ? "[clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)] opacity-100 scale-100"
-              : "[clip-path:polygon(50%_10%,60%_50%,50%_90%,40%_50%)] opacity-60 scale-105"
-          }`}
+          className={`absolute inset-0 transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isLoaded
+            ? "[clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)] opacity-100 scale-100"
+            : "[clip-path:polygon(50%_10%,60%_50%,50%_90%,40%_50%)] opacity-60 scale-105"
+            }`}
         >
           <Image
             src="/heroWrap.jpg"
@@ -88,7 +87,7 @@ export default function FoundationHero() {
         {/* Main Display Heading matching reference ultra-condensed typography */}
         <h1
           id="hero-heading"
-          className="mt-1 font-display-condensed text-[clamp(4rem,12.5vw,10.5rem)] font-black uppercase leading-[0.82] tracking-tighter text-[#f5eee6]"
+          className="mt-1 font-display-condensed text-[clamp(3.5rem,11.5vw,10.5rem)] font-black uppercase leading-[0.82] tracking-tighter text-[#f5eee6] break-words"
         >
           Designer
           <span className="font-serif-accent text-3xl sm:text-5xl lg:text-6xl font-normal text-[#f3dbc7] italic ml-3 align-baseline">
