@@ -6,6 +6,7 @@ This directory is the single source of truth for the portfolio development proce
 
 - `PROJECT_STATUS.md`: current project stage, implementation state, issues, risks, and next task.
 - `architecture.md`: proposed portfolio structure, responsibilities, tokens, motion, routing, testing, performance, and senior review.
+- `IMPLEMENTATION_PROMPTS.md`: ordered prompt roadmap and working decisions for future implementation passes.
 - `CHANGELOG.md`: completed changes, reasons, affected files, and validation.
 - `TODO.md`: active work items, priorities, blockers, and notes.
 - `reference/`: reference-site research and constraints. Unverified observations must be marked accordingly.

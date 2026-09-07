@@ -65,7 +65,7 @@ public/
   icons/
 ```
 
-The current repository uses `app/components/`; migration to the proposed root `components/` structure should be incremental. Do not create the entire tree until the first implementation slice needs it.
+The current repository now uses root `components/`; the former `app/components/` legacy tree was deleted. The new `content/` directory is the canonical location for replaceable profile, project, experience, and link content. The existing `data/projects.ts` remains the typed route fixture until the homepage implementation consumes the canonical content records.
 
 ## Separation of concerns
 
@@ -134,7 +134,7 @@ These are starting semantic tokens, not a license to copy the reference's exact 
 
 WebGL is **approved for the foundation as an isolated optional visual layer** because the reference investigation found a Three.js/WebGL canvas and the user explicitly approved implementing it. It remains nonessential: the portfolio must be complete and usable with the fallback image when WebGL is unavailable, disabled, or reduced motion is requested.
 
-If later approved:
+If the optional layer is enabled beyond the current foundation:
 
 - Purpose: one decorative, nonessential hero visual layer only, not a source of content or navigation.
 - Boundary: isolated `HeroVisual` canvas, dynamically imported with `ssr: false`.
@@ -203,13 +203,13 @@ All slugs must be unique. External destinations must be explicit and validated. 
 
 ## Senior review and risks
 
-- **Unnecessary dependencies:** Do not add React Three Fiber, Three.js, Framer Motion, or a CMS for the first slice. GSAP, ScrollTrigger, and Lenis are justified only for measured motion requirements and must be added deliberately.
+- **Unnecessary dependencies:** Do not add React Three Fiber, Framer Motion, or a CMS for the current slice. GSAP, ScrollTrigger, Lenis, and Three.js are approved for the isolated foundation because they correspond to measured reference behavior; keep their use bounded and justified.
 - **Hydration:** keep `window`, pointer, Lenis, GSAP, and canvas access inside client effects; do not render time- or viewport-dependent markup differently on server and client.
 - **GSAP lifecycle:** use scoped contexts, `matchMedia`, cleanup, and stable refs; never create timelines during render.
 - **Next.js:** keep `metadata` and route composition server-side; use client components only at interaction boundaries; dynamic-import WebGL with SSR disabled.
 - **Performance:** hero animation and custom cursor can compete for the main thread; prefer transforms, one ticker, lazy media, and a static fallback.
 - **Accessibility:** reduced motion, focus-visible states, touch behavior, alt text, and overlay focus return must be acceptance criteria, not polish tasks.
-- **Current repo risks:** the project still contains styled-components even though the target architecture prefers Tailwind, and existing raw image handling has lint warnings. npm is now canonical and the stale Yarn lockfile has been removed. Resolve remaining legacy styling and image warnings in focused tasks rather than hiding them in the redesign.
+- **Current repo risks:** the content fixture and canonical `content/` records are temporarily duplicated until the homepage data migration. Node `v23.11.0` is outside the preferred LTS baseline and should be standardized before deployment. Resolve these in focused tasks rather than hiding them in the redesign.
 
 ## Implementation sequence
 

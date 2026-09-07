@@ -70,7 +70,28 @@ The warnings and Yarn failure predate this documentation-only change. No applica
 | Reduced-motion browser test | Pass                                | Page remained usable under `prefers-reduced-motion: reduce`.                                                                                      |
 | Runtime error smoke test    | Pass                                | Home page emitted no `pageerror` events in the browser test.                                                                                      |
 | Project route smoke test    | Pass                                | `/projects/project-one` rendered the typed project title.                                                                                         |
-| `npm audit --omit=dev`      | Partial                             | Reports 2 remaining high findings in the Next/PostCSS tree after upgrading Next to `14.2.35`; no non-major fix is available for the current line. |
+| `npm audit --omit=dev`      | Partial                             | Reports 2 remaining high findings in the Next/PostCSS tree after upgrading Next to `16.3.4`; a later dependency/advisory update may be required. |
+
+## Next 16 migration validation
+
+| Check | Result | Details |
+| --- | --- | --- |
+| `npm run lint` | Pass | ESLint 9 flat config runs cleanly. |
+| `npm run build` | Pass | Next.js `16.3.4` with Turbopack compiled, typechecked, and generated `/`, `/projects/project-one`, and `/projects/project-two`. |
+| `BASE_URL=http://localhost:3006 npm run test:e2e` | Pass | 6 Playwright tests passed across desktop and mobile. |
+| Runtime server log | Pass | Next 16 dev server returned successful 200 responses without runtime exceptions. |
+| Legacy cleanup | Pass | `app/components/` and the Tyler modal config are deleted; `data/` and `public/` remain present. |
+| `npm audit --omit=dev` | Partial | 2 high findings remain in the Next/PostCSS tree; a forced major upgrade was not performed. |
+
+## Next 16 final migration run
+
+| Check | Result | Details |
+| --- | --- | --- |
+| `npm run lint` | Pass | ESLint 9 flat configuration passed. |
+| `npm run build` | Pass | Next.js `16.3.4` Turbopack build passed with typed static project routes. |
+| `BASE_URL=http://localhost:3007 npm run test:e2e` | Pass | 6 Playwright tests passed on desktop/mobile, including reduced motion and route smoke tests. |
+| Local server | Pass | Fresh server on port 3007 returned HTTP 200 and logged successful requests without runtime exceptions. |
+| Legacy preservation check | Pass | `data/` and `public/` remain present; disconnected `app/components/` and modal config were deleted. |
 
 ## Foundation reset and dependency cleanup
 
