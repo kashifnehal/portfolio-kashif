@@ -1,14 +1,22 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import { profile } from "@/content/profile";
+import { useReveal } from "@/components/motion/useReveal";
 
 export default function IntroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  useReveal(containerRef, { y: 40, duration: 0.7 });
+
   return (
     <section
       id="intro"
+      ref={containerRef}
       className="relative px-gutter py-28 bg-[#0d0d0d] text-[#f5eee6]"
       aria-labelledby="intro-heading"
     >
-      <div className="mx-auto max-w-content">
+      <div className="mx-auto max-w-6xl">
         <div className="grid gap-16 lg:grid-cols-12 lg:items-start">
           {/* Left Column: Heading & Large Uppercase Bio Copy */}
           <div className="lg:col-span-7">
@@ -31,13 +39,13 @@ export default function IntroSection() {
 
           {/* Right Column: 3D Michelangelo Bust Image */}
           <div className="lg:col-span-5 relative flex flex-col items-center justify-start pt-4">
-            <div className="relative w-full max-w-sm overflow-hidden rounded-sm bg-black">
+            <div className="relative w-full max-w-sm overflow-hidden rounded-sm bg-black border border-white/10">
               <Image
                 src="/heroWrap.jpg"
                 alt="Bust reference — decorative"
                 width={500}
                 height={640}
-                className="w-full object-cover grayscale opacity-80"
+                className="w-full object-cover reference-img-filter opacity-85"
                 style={{ aspectRatio: "5/6" }}
               />
             </div>

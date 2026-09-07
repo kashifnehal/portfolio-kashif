@@ -1,48 +1,59 @@
+"use client";
+
+import { useRef } from "react";
 import { services } from "@/content/services";
+import { useReveal } from "@/components/motion/useReveal";
 
 export default function ServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  useReveal(containerRef, { y: 40, duration: 0.7 });
+
   return (
     <section
       id="services"
-      className="px-gutter py-24 md:py-36"
+      ref={containerRef}
+      className="px-gutter py-24 md:py-36 bg-[#0d0d0d] text-[#f5eee6] border-t border-white/10"
       aria-labelledby="services-heading"
     >
-      <div
-        className="mx-auto max-w-content border-t pt-16"
-        style={{ borderColor: "var(--color-border)" }}
-      >
+      <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
-          {/* Label column */}
-          <div className="md:col-span-4">
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-              Capabilities
-            </p>
+          {/* Label & Headline Column */}
+          <div className="md:col-span-5 space-y-4">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#a09a94]">
+              Capabilities &amp; Expertise
+            </span>
             <h2
               id="services-heading"
-              className="mt-4 font-display text-[clamp(2rem,6vw,4.5rem)] font-semibold uppercase leading-[0.9] text-foreground"
+              className="font-display-condensed text-5xl sm:text-7xl lg:text-8xl font-extrabold uppercase leading-[0.84] tracking-tighter text-[#f5eee6]"
             >
-              What I
-              <br />
-              do best.
+              What I<br />do best.
             </h2>
+            <p className="max-w-md font-mono text-xs uppercase tracking-wider text-[#a09a94] pt-4">
+              Combining visual direction with clean engineering to craft digital products that stand out.
+            </p>
           </div>
 
-          {/* Services list */}
-          <ul className="md:col-span-8">
+          {/* Services List Column */}
+          <ul className="md:col-span-7 divide-y divide-white/10">
             {services.map((service, index) => (
               <li
                 key={service.id}
-                className="flex flex-col gap-3 border-b py-8 first:border-t sm:flex-row sm:gap-8"
-                style={{ borderColor: "var(--color-border)" }}
+                className="group flex flex-col gap-4 py-8 transition-colors hover:bg-white/5 px-4 rounded-sm"
               >
-                <span className="w-8 shrink-0 font-mono text-xs text-muted opacity-40">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div className="flex-1">
-                  <h3 className="text-base font-semibold uppercase text-foreground sm:text-lg">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs text-[#a09a94]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-mono text-xs text-[#a09a94] opacity-0 transition-opacity group-hover:opacity-100">
+                    0{index + 1} — CAPABILITY
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-display-condensed text-3xl sm:text-4xl font-bold uppercase tracking-tight text-[#f5eee6] transition-colors group-hover:text-[#f3dbc7]">
                     {service.title}
                   </h3>
-                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted">
+                  <p className="max-w-xl text-sm leading-relaxed text-[#a09a94]">
                     {service.description}
                   </p>
                 </div>
