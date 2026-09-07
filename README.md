@@ -1,4 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kashif Nehal Portfolio
+
+## AI Agent Handoff
+
+This is a Next.js 16 App Router portfolio foundation for Kashif Nehal. The project has completed reference forensics, architecture planning, dependency migration, legacy cleanup, motion infrastructure, typed project routing, and Playwright smoke tests. Full homepage implementation is the next phase.
+
+Before changing code, read in this order:
+
+1. `AGENTS.md` for mandatory workflow and validation rules.
+2. `docs/PROJECT_STATUS.md` for the current state, risks, and next task.
+3. `docs/IMPLEMENTATION_PROMPTS.md` to identify the next approved prompt. Work one prompt at a time.
+4. `docs/architecture.md` for component, content, routing, motion, WebGL, testing, and accessibility boundaries.
+5. `docs/reference/` for the forensic design, responsive, interaction, animation, technology, and asset specifications.
+6. `docs/testing/BASELINE.md`, `docs/CHANGELOG.md`, and `docs/TODO.md` for validation history and remaining work.
+
+Keep content centralized under `content/`, preserve `public/` and `data/`, and do not copy the reference site's identity or protected content. After every task, update the relevant `/docs` files, run validation, and record the commit ID and timestamp.
+
+Current stack: Next.js 16, React 19, TypeScript, Tailwind CSS, GSAP, ScrollTrigger, Lenis, Three.js, and Playwright. Deployment target: Vercel with `kashifnehal.com`.
+
+## Quick Summary
+
+- Replaced the old homepage composition with a foundation-only hero.
+- Added design tokens, reduced-motion support, GSAP/ScrollTrigger/Lenis lifecycle utilities, and an optional WebGL visual.
+- Added typed project data and `/projects/[slug]` routes.
+- Added loading, error, not-found, and Playwright foundations.
+- Removed deprecated `@next/font`, styled-components, the old Tyler modal, and disconnected legacy components.
+- Preserved `data/` and `public/` assets.
+- Added replaceable placeholder content under `content/`.
+- Latest pushed cleanup commit: `00549a6`.
+
+## Getting Started
 
 ## Getting Started
 
