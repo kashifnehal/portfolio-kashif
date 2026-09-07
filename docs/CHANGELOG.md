@@ -2,6 +2,12 @@
 
 ## 2026-09-07
 
+- Change: Pushed the foundation implementation to `origin/main`.
+- Reason: Publish the completed foundation and documentation baseline.
+- Files/components affected: All staged foundation, legacy reset, dependency, test, and documentation files.
+- Testing performed: `npm run lint`, `npm run build`, `npm run test:e2e` with 6 passing tests on a clean server, local HTTP 200, and `git diff --check`.
+- Commit: `1becf92` at 2026-09-07T14:36:42Z.
+
 - Change: Replaced the active home page with the foundation-only route, disconnected legacy portfolio composition, removed deprecated `@next/font`, and patched Next.js to `14.2.35`.
 - Reason: Prevent old components/assets from affecting the new implementation and resolve the deprecated font and critical Next.js dependency issue.
 - Files/components affected: `app/page.tsx`, `app/layout.tsx`, `app/components/HeroSection.tsx`, `components/hero/FoundationHero.tsx`, `package.json`, `package-lock.json`, and legacy `app/components/` files now disconnected from the active route.
