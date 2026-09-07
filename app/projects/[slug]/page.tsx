@@ -7,8 +7,37 @@ import ProjectDetailOverview from "@/components/projects/detail/ProjectDetailOve
 import ProjectDetailGallery from "@/components/projects/detail/ProjectDetailGallery";
 import ProjectNextFooter from "@/components/projects/detail/ProjectNextFooter";
 
+import type { Metadata } from "next";
+
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+
+  return {
+    title: project.title,
+    description: project.summary || project.description,
+    openGraph: {
+      title: `${project.title} — Kashif Nehal`,
+      description: project.summary || project.description,
+      images: [
+        {
+          url: project.image.src,
+          width: project.image.width,
+          height: project.image.height,
+          alt: project.image.alt,
+        },
+      ],
+    },
+  };
 }
 
 export default async function ProjectPage({

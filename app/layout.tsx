@@ -16,9 +16,39 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kashif Nehal | Digital Designer & Developer",
+  metadataBase: new URL("https://kashifnehal.com"),
+  title: {
+    default: "Kashif Nehal | Lead UX/UI Designer & Creative Developer",
+    template: "%s | Kashif Nehal",
+  },
   description:
-    "Portfolio of Kashif Nehal — digital designer and developer crafting precise, purposeful web experiences.",
+    "Portfolio of Kashif Nehal — Lead UX/UI Designer & Creative Developer crafting high-impact digital products, design systems, and bespoke web experiences.",
+  keywords: [
+    "Kashif Nehal",
+    "UX/UI Design",
+    "Creative Development",
+    "Design System",
+    "Frontend Engineering",
+    "Next.js Portfolio",
+    "Web Development",
+  ],
+  authors: [{ name: "Kashif Nehal", url: "https://kashifnehal.com" }],
+  creator: "Kashif Nehal",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://kashifnehal.com",
+    title: "Kashif Nehal | Lead UX/UI Designer & Creative Developer",
+    description:
+      "Portfolio of Kashif Nehal — Lead UX/UI Designer & Creative Developer crafting high-impact digital products, design systems, and bespoke web experiences.",
+    siteName: "Kashif Nehal Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kashif Nehal | Lead UX/UI Designer & Creative Developer",
+    description:
+      "Portfolio of Kashif Nehal — Lead UX/UI Designer & Creative Developer crafting high-impact digital products, design systems, and bespoke web experiences.",
+  },
 };
 
 export default function RootLayout({
