@@ -2,6 +2,21 @@
 
 ## 2026-09-07
 
+- Change: Removed conflicting hero wireframe globe, matched reference ultra-condensed typography (`Big Shoulders Display`), exact availability capsule graphic (`★ 07 / sep AVAILABLE FOR WORK`), and right-aligned uppercase text block.
+- Reason: User-provided screenshot verification revealed that hero layout, fonts, availability graphics, and globe presence differed from reference `https://bepatrickdavid.com/`.
+- Files/components affected: `components/hero/FoundationHero.tsx`, `app/globals.css`, `tests/e2e/compare.spec.ts`, `docs/PROJECT_STATUS.md`, `docs/CHANGELOG.md`.
+- Testing performed: `npm run lint` (0 errors), `npm run build` (clean Turbopack compilation), `BASE_URL=http://localhost:3007 npx playwright test` (14/14 tests passed across desktop and mobile viewports, side-by-side screenshot verification).
+
+- Change: Completed Prompt 8 — Hero and Intro Refinement.
+- Reason: Reproduced exact reference hero artwork background plane, diamond clip-path entrance animation, 8-point spinning star availability widget, display typography choreography (`creative`, `Designer & developer`), and Michelangelo's David 3D model wrapper with handwritten SVG annotation.
+- Files/components affected: `components/hero/FoundationHero.tsx`, `components/sections/IntroSection.tsx`, `content/profile.ts`, `content/projects.ts`, `content/recognition.ts`, `content/services.ts`, `data/projects.ts`, `components/layout/SiteHeader.tsx`, `components/sections/RecognitionSection.tsx`, `components/sections/MarqueeStrip.tsx`, `components/sections/ContactSection.tsx`, `components/layout/SiteFooter.tsx`, `app/page.tsx`, `tests/e2e/foundation.spec.ts`, `tests/e2e/homepage-structure.spec.ts`.
+- Testing performed: `npm run lint` (0 errors), `npm run build` (clean Turbopack compilation), `BASE_URL=http://localhost:3007 npx playwright test` (10/10 tests passed across desktop and mobile viewports).
+
+- Change: Implemented Prompt 7 — Homepage Structural Skeleton.
+- Reason: Created semantic structural skeleton for persistent header navigation, hero, introduction/about, selected projects, recognition/achievements, services/capabilities, contact CTA, marquee divider, and footer.
+- Files/components affected: `components/layout/SiteHeader.tsx`, `components/layout/SiteFooter.tsx`, `components/layout/SiteShell.tsx`, `components/hero/FoundationHero.tsx`, `components/sections/IntroSection.tsx`, `components/sections/ProjectsSection.tsx`, `components/sections/RecognitionSection.tsx`, `components/sections/ServicesSection.tsx`, `components/sections/ContactSection.tsx`, `components/sections/MarqueeStrip.tsx`, `content/profile.ts`, `content/recognition.ts`, `content/services.ts`, `app/page.tsx`, `app/layout.tsx`, `app/projects/[slug]/page.tsx`, `app/loading.tsx`, `app/not-found.tsx`, `app/error.tsx`, `tests/e2e/homepage-structure.spec.ts`.
+- Testing performed: `npm run lint` (0 errors), `npm run build` (clean Turbopack compilation), `BASE_URL=http://localhost:3007 npx playwright test` (10/10 tests passed across desktop and mobile viewports).
+
 - Change: Removed the last unused image copies from the deleted `app/components` tree and corrected migration bookkeeping.
 - Reason: Complete legacy cleanup without touching `data/` or `public/` assets, and make commit history/status accurate.
 - Files/components affected: `app/components/greek.jpg`, `app/components/heroWrap.jpg`, `docs/PROJECT_STATUS.md`, and `docs/CHANGELOG.md`.

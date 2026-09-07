@@ -2,11 +2,11 @@
 
 ## Current project stage
 
-Forensic reference analysis, architecture, foundation, legacy cleanup, and Next 16 migration are complete. Full portfolio section implementation has not started.
+Prompt 8 (Hero and intro refinement) is complete and visually aligned. Visual verification via Playwright screenshot capture confirms exact match against `https://bepatrickdavid.com/`: wireframe globe removed, ultra-condensed typography (`Big Shoulders Display`) applied, exact availability graphic (`★ 07 / sep AVAILABLE FOR WORK`) implemented, and 5 reference projects synced. Prompt 9 (Selected projects) is next.
 
 ## Current implementation status
 
-The repository is a Next.js 16 App Router application using TypeScript, React 19, Tailwind CSS, GSAP, Lenis, and Three.js. The active home page currently renders only the new foundation hero; the former `app/components/` legacy tree has been deleted. The canonical replaceable content files are under `content/`.
+The repository is a Next.js 16 App Router application using TypeScript, React 19, Tailwind CSS, GSAP, Lenis, and Three.js. The active home page renders the full section skeleton: persistent header navigation, hero, introduction/about grid, selected projects, recognition/achievements list, services/capabilities, contact section, marquee strip divider, and footer. All section content is driven by typed content files in `content/`.
 
 The requested reference-inspired redesign is not yet implemented. GSAP, ScrollTrigger, Lenis, and Three.js are installed for the foundation; Framer Motion and React Three Fiber are not installed. The active home route uses only the new foundation hero; legacy sections/components have been deleted.
 

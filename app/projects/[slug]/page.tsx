@@ -18,29 +18,36 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   return (
-    <main className="min-h-screen bg-background px-[var(--space-gutter)] py-8 text-foreground">
-      <Link className="text-sm underline underline-offset-4" href="/">
-        Back home
-      </Link>
-      <article className="mx-auto mt-16 max-w-5xl">
-        <p className="font-mono text-sm uppercase text-muted">
-          {project.role.join(" / ")}
-        </p>
-        <h1 className="mt-4 text-6xl font-semibold tracking-tight sm:text-8xl">
-          {project.title}
-        </h1>
-        <div className="relative mt-12 aspect-video overflow-hidden rounded">
-          <Image
-            src={project.image.src}
-            alt={project.image.alt}
-            fill
-            sizes="(max-width: 768px) 100vw, 80vw"
-            className="object-cover"
-            priority
-          />
+    <article className="min-h-screen bg-background px-gutter pb-16 pt-[calc(55px+2rem)] text-foreground">
+      <div className="mx-auto max-w-content">
+        <Link
+          className="font-mono text-xs uppercase tracking-[0.14em] text-muted underline underline-offset-4 transition-colors duration-fast hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          href="/"
+        >
+          ← Back home
+        </Link>
+        <div className="mx-auto mt-16 max-w-5xl">
+          <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+            {project.role.join(" / ")}
+          </p>
+          <h1 className="mt-4 font-display text-[clamp(3rem,10vw,8rem)] font-semibold uppercase leading-[0.88]">
+            {project.title}
+          </h1>
+          <div className="relative mt-12 aspect-video overflow-hidden">
+            <Image
+              src={project.image.src}
+              alt={project.image.alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 80vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+            {project.summary}
+          </p>
         </div>
-        <p className="mt-8 max-w-2xl text-lg text-muted">{project.summary}</p>
-      </article>
-    </main>
+      </div>
+    </article>
   );
 }

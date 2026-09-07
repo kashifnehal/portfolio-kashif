@@ -13,6 +13,7 @@ Never make large architectural changes without reviewing the existing architectu
 Never blindly copy reference-site content.
 
 The reference site is used to study:
+
 - layout
 - interaction
 - motion
@@ -20,6 +21,7 @@ The reference site is used to study:
 - technical patterns
 
 Our site uses:
+
 - our own content
 - our own identity
 - our own assets

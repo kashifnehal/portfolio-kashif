@@ -9,9 +9,9 @@ test("home page loads without a runtime error", async ({ page }) => {
 });
 
 test("project route loads from typed data", async ({ page }) => {
-  await page.goto("/projects/project-one");
+  await page.goto("/projects/barbara-scerbo");
   await expect(
-    page.getByRole("heading", { name: "Project One" }),
+    page.getByRole("heading", { name: "Barbara Scerbo" }),
   ).toBeVisible();
 });
 
