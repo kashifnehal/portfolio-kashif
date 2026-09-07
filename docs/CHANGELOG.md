@@ -2,6 +2,11 @@
 
 ## 2026-09-08
 
+- Change: Completed Prompt 16 — Final Visual and Motion QA Pass.
+- Reason: Evaluated 15 core design & motion areas across 5 target viewports (`1440x900`, `1280x800`, `1024x768`, `768x1024`, `390x844`). Classified differences into P0–P4 levels. Confirmed 0 P0 or P1 discrepancies.
+- Files/components affected: `tests/e2e/final-qa-compare.spec.ts`, `docs/PROJECT_STATUS.md`, `docs/TODO.md`, `docs/CHANGELOG.md`, `docs/testing/BASELINE.md`.
+- Testing performed: `npm run lint` (0 errors), `npm run build` (9 static routes prerendered), `npx playwright test` (84/84 total tests passed across 8 test suites in 16.2s).
+
 - Change: Completed Prompt 15 — Comprehensive Automated Browser Test Suite.
 - Reason: Created `tests/e2e/e2e-user-flows.spec.ts` testing user-visible behavior across homepage, navigation, project grid, project opening transitions, project detail pages, direct route loads, refresh, back navigation, rapid click safety, uncaught error/console listener trapping, and deterministic screenshot capture.
 - Files/components affected: `tests/e2e/e2e-user-flows.spec.ts`, `docs/PROJECT_STATUS.md`, `docs/TODO.md`, `docs/CHANGELOG.md`, `docs/testing/BASELINE.md`.
