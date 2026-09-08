@@ -1,7 +1,7 @@
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import { ProjectTransitionProvider } from "@/components/projects/ProjectTransitionContext";
-import FontPlayground from "@/components/ui/FontPlayground";
+import DesignPlayground from "@/components/ui/DesignPlayground";
 
 export default function SiteShell({
   children,
@@ -13,7 +13,7 @@ export default function SiteShell({
       <SiteHeader />
       <main id="top">{children}</main>
       <SiteFooter />
-      <FontPlayground />
+      <DesignPlayground />
     </ProjectTransitionProvider>
   );
 }
