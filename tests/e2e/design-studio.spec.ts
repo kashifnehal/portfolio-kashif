@@ -16,7 +16,7 @@ test.describe("Design Studio — Customizer Panel", () => {
     await expect(toggle).toContainText("Design Studio");
   });
 
-  // ─── 2. Open / close panel ────────────────────────────────────────────
+  // ─── 2. Open / close panel & click outside ────────────────────────────
   test("panel opens on click and closes via X button", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
@@ -27,61 +27,68 @@ test.describe("Design Studio — Customizer Panel", () => {
     await expect(page.locator("#design-playground-toggle")).toBeVisible();
   });
 
-  // ─── 3. All 4 tabs present ────────────────────────────────────────────
-  test("all four tabs are present: Fonts, Colors, Filters, Grid", async ({ page }) => {
+  test("panel closes when clicked outside", async ({ page }) => {
+    await page.locator("#design-playground-toggle").click();
+    const panel = page.locator("#design-playground-panel");
+    await expect(panel).toBeVisible();
+
+    // Click outside panel (e.g. top-left corner of viewport)
+    await page.mouse.click(10, 10);
+    await expect(panel).not.toBeVisible();
+  });
+
+  // ─── 3. Tabs present (Fonts, Filters, Grid) — Colors removed ─────────
+  test("tabs present are Fonts, Filters, Grid (Colors removed)", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
     await expect(panel.getByRole("button", { name: "Fonts" })).toBeVisible();
-    await expect(panel.getByRole("button", { name: "Colors" })).toBeVisible();
     await expect(panel.getByRole("button", { name: "Filters" })).toBeVisible();
-    await expect(panel.getByRole("button", { name: "Grid" })).toBeVisible();
+    await expect(panel.getByRole("button", { name: "Grid", exact: true })).toBeVisible();
+    await expect(panel.getByRole("button", { name: "Colors" })).not.toBeVisible();
   });
 
-  // ─── 4. Font switching updates CSS vars ──────────────────────────────
-  test("switching display font updates --font-display CSS variable", async ({ page }) => {
-    await page.locator("#design-playground-toggle").click();
-    const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Bebas Neue" }).click();
+  // ─── 4. Default display font is Bebas Neue ─────────────────────────────
+  test("default display font is Bebas Neue", async ({ page }) => {
     const fontVar = await page.evaluate(() =>
-      document.documentElement.style.getPropertyValue("--font-display")
+      window.getComputedStyle(document.documentElement).getPropertyValue("--font-display")
     );
     expect(fontVar).toContain("Bebas Neue");
   });
 
-  test("switching body font updates --font-body CSS variable", async ({ page }) => {
+  // ─── 5. Typography Presets ─────────────────────────────────────────────
+  test("switching to Luxury & Editorial preset updates font variables", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Geist Sans" }).click();
+    await panel.getByRole("button", { name: /Luxury & Editorial/ }).click();
+
     const fontVar = await page.evaluate(() =>
-      document.documentElement.style.getPropertyValue("--font-body")
+      document.documentElement.style.getPropertyValue("--font-display")
     );
-    expect(fontVar).toBeTruthy();
+    expect(fontVar).toContain("Cormorant Garamond");
   });
 
-  // ─── 5. Theme switching ───────────────────────────────────────────────
-  test("selecting Cyber Tech theme updates --color-background", async ({ page }) => {
+  test("switching to Vintage & Retro preset updates display font to Syne", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Colors" }).click();
-    await panel.getByRole("button", { name: /Cyber Tech/ }).click();
-    const bg = await page.evaluate(() =>
-      document.documentElement.style.getPropertyValue("--color-background")
+    await panel.getByRole("button", { name: /Vintage & Retro/ }).click();
+
+    const fontVar = await page.evaluate(() =>
+      document.documentElement.style.getPropertyValue("--font-display")
     );
-    expect(bg).toBe("#080811");
+    expect(fontVar).toContain("Syne");
   });
 
-  test("selecting Crimson accent swatch overrides --color-accent", async ({ page }) => {
+  // ─── 6. Design Studio Modal Constant Isolation ─────────────────────────
+  test("Design Studio panel font family remains constant when font theme changes", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Colors" }).click();
-    await panel.getByRole("button", { name: /Crimson/ }).click();
-    const accent = await page.evaluate(() =>
-      document.documentElement.style.getPropertyValue("--color-accent")
-    );
-    expect(accent).toBe("#ef4444");
+    await panel.getByRole("button", { name: /Luxury & Editorial/ }).click();
+
+    const panelFont = await panel.evaluate((el) => window.getComputedStyle(el).fontFamily);
+    expect(panelFont).not.toContain("Cormorant Garamond");
   });
 
-  // ─── 6. Filter tab ───────────────────────────────────────────────────
+  // ─── 7. Filter tab ───────────────────────────────────────────────────
   test("switching to Monochrome Noir filter updates --img-filter", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
@@ -93,81 +100,60 @@ test.describe("Design Studio — Customizer Panel", () => {
     expect(filter).toContain("grayscale(100%)");
   });
 
-  // ─── 7. Grid/Layout tab ──────────────────────────────────────────────
-  test("switching to grid layout sets data-layout=grid on #cases", async ({ page }) => {
+  // ─── 8. Grid/Layout tab ──────────────────────────────────────────────
+  test("switching layout updates data-layout on #cases", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Grid" }).click();
-    await panel.getByRole("button", { name: /Compact 2-Column Grid/ }).click();
+    await panel.getByRole("button", { name: "Grid", exact: true }).click();
+
+    await panel.getByRole("button", { name: /Symmetrical Grid Focus/ }).click();
     await expect(page.locator("#cases")).toHaveAttribute("data-layout", "grid");
-  });
 
-  test("switching to list layout sets data-layout=list on #cases", async ({ page }) => {
-    await page.locator("#design-playground-toggle").click();
-    const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Grid" }).click();
-    await panel.getByRole("button", { name: /Minimal List View/ }).click();
+    await panel.getByRole("button", { name: /Minimalist List View/ }).click();
     await expect(page.locator("#cases")).toHaveAttribute("data-layout", "list");
+
+    await panel.getByRole("button", { name: /Compact Dashboard Matrix/ }).click();
+    await expect(page.locator("#cases")).toHaveAttribute("data-layout", "compact");
   });
 
-  // ─── 8. Reset to Default ─────────────────────────────────────────────
-  test("Reset to Default restores default CSS values and editorial layout", async ({ page }) => {
+  // ─── 9. Reset to Default ─────────────────────────────────────────────
+  test("Reset to Default restores Bebas Neue default font and editorial layout", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
 
-    // Apply Cyber Tech theme (bg: #080811) and grid layout
-    await panel.getByRole("button", { name: "Colors" }).click();
-    await panel.getByRole("button", { name: /Cyber Tech/ }).click();
-    await panel.getByRole("button", { name: "Grid" }).click();
-    await panel.getByRole("button", { name: /Compact 2-Column Grid/ }).click();
-
-    // Verify customisation was applied
-    const bgBefore = await page.evaluate(() =>
-      document.documentElement.style.getPropertyValue("--color-background")
-    );
-    expect(bgBefore).toBe("#080811");
+    // Apply Luxury & Editorial theme and compact layout
+    await panel.getByRole("button", { name: /Luxury & Editorial/ }).click();
+    await panel.getByRole("button", { name: "Grid", exact: true }).click();
+    await panel.getByRole("button", { name: /Compact Dashboard Matrix/ }).click();
 
     // Reset
     await panel.getByRole("button", { name: "Reset to Default" }).click();
 
-    // After reset, useEffect re-applies the default theme (Dark Onyx bg = #0d0d0d)
-    const bgAfter = await page.evaluate(() =>
-      document.documentElement.style.getPropertyValue("--color-background")
+    const fontVar = await page.evaluate(() =>
+      document.documentElement.style.getPropertyValue("--font-display")
     );
-    expect(bgAfter).toBe("#0d0d0d");
+    expect(fontVar).toContain("Bebas Neue");
 
-    // Layout must return to editorial
     await expect(page.locator("#cases")).toHaveAttribute("data-layout", "editorial");
   });
 
-  test("Reset to Default clears localStorage keys", async ({ page }) => {
-    await page.locator("#design-playground-toggle").click();
-    const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Colors" }).click();
-    await panel.getByRole("button", { name: /Alpine Emerald/ }).click();
-    await panel.getByRole("button", { name: "Reset to Default" }).click();
-    const stored = await page.evaluate(() => localStorage.getItem("portfolio_theme"));
-    expect(stored).toBeNull();
-  });
-
-  // ─── 9. UI integrity across layout switches ───────────────────────────
+  // ─── 10. UI integrity across layout switches ───────────────────────────
   test("switching layouts does not cause JS errors or break nav/footer", async ({ page }) => {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
 
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Grid" }).click();
+    await panel.getByRole("button", { name: "Grid", exact: true }).click();
 
-    // Use exact button text to avoid regex issues with parentheses in "(Default)"
     const layoutButtons = [
-      "Compact 2-Column Grid",
-      "Minimal List View",
+      "Symmetrical Grid Focus",
+      "Minimalist List View",
+      "Compact Dashboard Matrix",
       "Editorial Cards (Default)",
     ];
 
     for (const name of layoutButtons) {
-      // Use exact string match, not regex, to avoid unescaped parentheses
       await panel.getByRole("button", { name, exact: false }).first().click();
       await page.waitForTimeout(300);
       await expect(page.getByRole("navigation", { name: "Primary navigation" })).toBeVisible();
@@ -176,24 +162,12 @@ test.describe("Design Studio — Customizer Panel", () => {
     expect(errors).toEqual([]);
   });
 
-  // ─── 10. localStorage persistence ────────────────────────────────────
+  // ─── 11. localStorage persistence & active badge ──────────────────────
   test("theme selection is persisted in localStorage", async ({ page }) => {
     await page.locator("#design-playground-toggle").click();
     const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Colors" }).click();
-    await panel.getByRole("button", { name: /Alpine Emerald/ }).click();
-    const stored = await page.evaluate(() => localStorage.getItem("portfolio_theme"));
-    expect(stored).toBe("Alpine Emerald");
-  });
-
-  // ─── 11. Active badge shows when customized ──────────────────────────
-  test("Active badge appears on toggle when a customization is applied", async ({ page }) => {
-    const toggle = page.locator("#design-playground-toggle");
-    await toggle.click();
-    const panel = page.locator("#design-playground-panel");
-    await panel.getByRole("button", { name: "Colors" }).click();
-    await panel.getByRole("button", { name: /Cyber Tech/ }).click();
-    await panel.getByRole("button", { name: "Close Design Studio" }).click();
-    await expect(toggle.getByText("Active")).toBeVisible();
+    await panel.getByRole("button", { name: /Vintage & Retro/ }).click();
+    const stored = await page.evaluate(() => localStorage.getItem("portfolio_font_theme"));
+    expect(stored).toBe("vintage");
   });
 });

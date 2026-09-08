@@ -6,14 +6,14 @@ import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 
 export default function ProjectGrid() {
-  const [layoutMode, setLayoutMode] = useState<"editorial" | "grid" | "list">("editorial");
+  const [layoutMode, setLayoutMode] = useState<"editorial" | "grid" | "list" | "compact">("editorial");
 
   useEffect(() => {
     // Sync with customizer layout mode if selected
     const handleLayoutChange = () => {
       const saved = localStorage.getItem("portfolio_layout_mode");
-      if (saved === "grid" || saved === "list" || saved === "editorial") {
-        setLayoutMode(saved);
+      if (saved === "grid" || saved === "list" || saved === "compact" || saved === "editorial") {
+        setLayoutMode(saved as "editorial" | "grid" | "list" | "compact");
       } else {
         setLayoutMode("editorial");
       }
@@ -44,7 +44,16 @@ export default function ProjectGrid() {
         </div>
       )}
 
-      {/* 3. Minimal List View Layout */}
+      {/* 3. High-Density 3-Column Compact Grid */}
+      {layoutMode === "compact" && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </div>
+      )}
+
+      {/* 4. Minimal List View Layout */}
       {layoutMode === "list" && (
         <div className="pt-8 divide-y divide-white/10 border-t border-b border-white/10 my-8">
           {projects.map((project, idx) => (

@@ -6,17 +6,20 @@
    ========================================================================== */
 
 :root {
-  /* PRIMARY DISPLAY FONT — Active: Syne */
-  --font-display: var(--font-syne), 'Syne', sans-serif;
-  --font-display-weight: 800;
-  --font-display-tracking: -0.03em;
+  /* PRIMARY DISPLAY FONT — Active Default: Bebas Neue */
+  --font-display: var(--font-bebas), 'Bebas Neue', sans-serif;
+  --font-display-weight: 400;
+  --font-display-tracking: 0.02em;
   --font-display-transform: uppercase;
 
-  /* BODY & UI FONT — Active: Space Grotesk */
+  /* BODY & UI FONT — Active Default: Space Grotesk */
   --font-body: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, sans-serif;
 
-  /* EDITORIAL ACCENT FONT — Active: Playfair Display */
+  /* EDITORIAL ACCENT FONT — Active Default: Playfair Display */
   --font-accent: var(--font-playfair), 'Playfair Display', serif;
+
+  /* TECH & MONO FONT — Active Default: Geist Mono */
+  --font-mono: var(--font-geist-mono), 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 /* Preset Font Family Utility Classes */
