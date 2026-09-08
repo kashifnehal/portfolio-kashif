@@ -6,8 +6,9 @@
   --color-overlay: #f3dbc7;
   --color-accent: #e59700;
   --color-border: rgb(245 238 230 / 0.35);
-  --font-display: var(--font-geist-sans), sans-serif;
-  --font-body: var(--font-geist-sans), sans-serif;
+  --font-display: var(--font-syne), "Syne", sans-serif;
+  --font-body: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-accent: var(--font-playfair), "Playfair Display", serif;
   --space-gutter: 28px;
   --space-gutter-mobile: 20px;
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);

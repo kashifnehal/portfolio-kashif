@@ -103,7 +103,7 @@ test.describe("Prompt 15: Comprehensive E2E User Behavior & Error Trapping Suite
     }
 
     // Page should still be healthy
-    await expect(page.locator("#hero")).toBeVisible();
+    await expect(page.locator("#hero").first()).toBeVisible();
   });
 
   test("Deterministic visual screenshots for major stable states", async ({ page }) => {

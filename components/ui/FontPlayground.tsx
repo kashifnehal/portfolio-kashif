@@ -11,19 +11,19 @@ type FontOption = {
 };
 
 const DISPLAY_FONTS: FontOption[] = [
-  { name: "Syne (Recommended)", family: "'Syne', sans-serif", weight: "800", tracking: "-0.03em", category: "display" },
-  { name: "Big Shoulders Display", family: "'Big Shoulders Display', sans-serif", weight: "900", tracking: "-0.04em", category: "display" },
-  { name: "Bebas Neue", family: "'Bebas Neue', sans-serif", weight: "400", tracking: "0.02em", category: "display" },
-  { name: "Oswald", family: "'Oswald', sans-serif", weight: "700", tracking: "-0.02em", category: "display" },
-  { name: "League Gothic", family: "'League Gothic', sans-serif", weight: "400", tracking: "0.03em", category: "display" },
-  { name: "Cormorant Garamond", family: "'Cormorant Garamond', serif", weight: "700", tracking: "-0.01em", category: "display" },
-  { name: "Instrument Serif", family: "'Instrument Serif', serif", weight: "400", tracking: "0em", category: "display" },
+  { name: "Syne (Recommended)", family: "var(--font-syne), 'Syne', sans-serif", weight: "800", tracking: "-0.03em", category: "display" },
+  { name: "Big Shoulders Display", family: "var(--font-big-shoulders), 'Big Shoulders Display', sans-serif", weight: "900", tracking: "-0.04em", category: "display" },
+  { name: "Bebas Neue", family: "var(--font-bebas), 'Bebas Neue', sans-serif", weight: "400", tracking: "0.02em", category: "display" },
+  { name: "Oswald", family: "var(--font-oswald), 'Oswald', sans-serif", weight: "700", tracking: "-0.02em", category: "display" },
+  { name: "League Gothic", family: "var(--font-league), 'League Gothic', sans-serif", weight: "400", tracking: "0.03em", category: "display" },
+  { name: "Cormorant Garamond", family: "var(--font-cormorant), 'Cormorant Garamond', serif", weight: "700", tracking: "-0.01em", category: "display" },
+  { name: "Instrument Serif", family: "var(--font-instrument), 'Instrument Serif', serif", weight: "400", tracking: "0em", category: "display" },
 ];
 
 const ACCENT_FONTS: FontOption[] = [
-  { name: "Playfair Display", family: "'Playfair Display', serif", category: "accent" },
-  { name: "Instrument Serif (Italic)", family: "'Instrument Serif', serif", category: "accent" },
-  { name: "Cormorant Garamond (Italic)", family: "'Cormorant Garamond', serif", category: "accent" },
+  { name: "Playfair Display", family: "var(--font-playfair), 'Playfair Display', serif", category: "accent" },
+  { name: "Instrument Serif (Italic)", family: "var(--font-instrument), 'Instrument Serif', serif", category: "accent" },
+  { name: "Cormorant Garamond (Italic)", family: "var(--font-cormorant), 'Cormorant Garamond', serif", category: "accent" },
 ];
 
 export default function FontPlayground() {

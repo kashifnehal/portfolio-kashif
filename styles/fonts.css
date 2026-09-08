@@ -5,47 +5,45 @@
    or use the interactive Font Switcher widget on the bottom-right of the page.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Big+Shoulders+Display:wght@800;900&family=Bebas+Neue&family=Oswald:wght@600;700&family=League+Gothic&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap');
-
 :root {
   /* PRIMARY DISPLAY FONT — Active: Syne */
-  --font-display: 'Syne', sans-serif;
+  --font-display: var(--font-syne), 'Syne', sans-serif;
   --font-display-weight: 800;
   --font-display-tracking: -0.03em;
   --font-display-transform: uppercase;
 
   /* BODY & UI FONT — Active: Space Grotesk */
-  --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, sans-serif;
 
   /* EDITORIAL ACCENT FONT — Active: Playfair Display */
-  --font-accent: 'Playfair Display', serif;
+  --font-accent: var(--font-playfair), 'Playfair Display', serif;
 }
 
 /* Preset Font Family Utility Classes */
 .font-preset-syne {
-  font-family: 'Syne', sans-serif !important;
+  font-family: var(--font-syne), 'Syne', sans-serif !important;
 }
 
 .font-preset-big-shoulders {
-  font-family: 'Big Shoulders Display', sans-serif !important;
+  font-family: var(--font-big-shoulders), 'Big Shoulders Display', sans-serif !important;
 }
 
 .font-preset-bebas {
-  font-family: 'Bebas Neue', sans-serif !important;
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif !important;
 }
 
 .font-preset-oswald {
-  font-family: 'Oswald', sans-serif !important;
+  font-family: var(--font-oswald), 'Oswald', sans-serif !important;
 }
 
 .font-preset-league {
-  font-family: 'League Gothic', sans-serif !important;
+  font-family: var(--font-league), 'League Gothic', sans-serif !important;
 }
 
 .font-preset-cormorant {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
 }
 
 .font-preset-instrument {
-  font-family: 'Instrument Serif', serif !important;
+  font-family: var(--font-instrument), 'Instrument Serif', serif !important;
 }

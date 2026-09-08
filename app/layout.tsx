@@ -1,8 +1,61 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import {
+  Syne,
+  Space_Grotesk,
+  Playfair_Display,
+  Bebas_Neue,
+  Oswald,
+  Cormorant_Garamond,
+  Instrument_Serif,
+} from "next/font/google";
 import "./globals.css";
 import MotionProvider from "@/components/motion/MotionProvider";
 import SiteShell from "@/components/layout/SiteShell";
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bebas",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
+  display: "swap",
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-instrument",
+  display: "swap",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -92,15 +145,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${syne.variable} ${spaceGrotesk.variable} ${playfairDisplay.variable} ${bebasNeue.variable} ${oswald.variable} ${cormorantGaramond.variable} ${instrumentSerif.variable} ${geistSans.variable} ${geistMono.variable}`}
+    >
       <head>
-        {/* Preconnect to Google Fonts for performance */}
+        {/* Preconnect & load Google Fonts fallback */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&family=Bebas+Neue&family=Oswald:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Instrument+Serif:ital@0;1&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <MotionProvider>
           <SiteShell>{children}</SiteShell>
         </MotionProvider>
