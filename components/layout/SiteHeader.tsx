@@ -11,7 +11,7 @@ export default function SiteHeader() {
   return (
     <header
       id="header"
-      className="fixed inset-x-0 top-0 z-50 h-[60px] border-b border-white/10 bg-black/40 px-gutter backdrop-blur-sm transition-all duration-300"
+      className="fixed inset-x-0 top-0 z-50 h-[70px] bg-transparent px-gutter transition-all duration-300 pointer-events-auto"
     >
       <div className="mx-auto flex h-full max-w-content items-center justify-between">
         <Link

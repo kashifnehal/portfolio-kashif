@@ -238,7 +238,7 @@ export default function DesignPlayground() {
     <aside
       ref={panelRef}
       aria-label="Design Playground Studio"
-      className="hidden md:block fixed bottom-5 right-5 z-50"
+      className="hidden md:block fixed bottom-44 right-6 lg:bottom-52 lg:right-[6%] z-50"
       style={{
         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         filter: "none",

@@ -194,6 +194,10 @@ test.describe("Design Studio — Customizer Panel", () => {
     // Recognition Award Title
     const awardTitleFont = await page.locator("#awards div.col-span-4").first().evaluate((el) => window.getComputedStyle(el).fontFamily);
     expect(awardTitleFont).toContain("Cormorant Garamond");
+
+    // Availability Widget Date Digits
+    const dateFont = await page.locator("#availability-widget span.font-display").first().evaluate((el) => window.getComputedStyle(el).fontFamily);
+    expect(dateFont).toContain("Cormorant Garamond");
   });
 
   // ─── 13. Project Detail Page (/projects/viceversa) font inheritance ───

@@ -13,7 +13,7 @@ export default function IntroSection() {
     <section
       id="intro"
       ref={containerRef}
-      className="relative px-gutter py-28 bg-[#0d0d0d] text-[#f5eee6]"
+      className="relative z-10 px-gutter py-28 bg-gradient-to-b from-transparent via-[#0d0d0d]/85 to-[#0d0d0d] text-[#f5eee6] transition-colors duration-500"
       aria-labelledby="intro-heading"
     >
       <div className="mx-auto max-w-6xl">
