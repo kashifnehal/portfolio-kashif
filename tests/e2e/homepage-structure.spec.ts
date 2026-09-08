@@ -27,4 +27,13 @@ test.describe("Homepage Structure & Navigation", () => {
     // Footer landmark
     await expect(page.locator("footer")).toBeVisible();
   });
+
+  test("availability widget hover triggers curtain transition", async ({ page }) => {
+    await page.goto("/");
+    const widget = page.locator("#availability-widget");
+    await expect(widget).toBeVisible();
+    await widget.hover();
+    await page.waitForTimeout(300);
+    await expect(page.getByText("It's a fake availability")).toBeVisible();
+  });
 });

@@ -7,6 +7,7 @@ import { profile } from "@/content/profile";
 
 export default function FoundationHero() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,6 +16,8 @@ export default function FoundationHero() {
     return () => clearTimeout(timer);
   }, []);
 
+  const isClipped = !isLoaded || isHovered;
+
   return (
     <section
       id="hero"
@@ -22,12 +25,13 @@ export default function FoundationHero() {
       aria-labelledby="hero-heading"
     >
       {/* Background artwork plane matching reference image */}
-      <div className="absolute inset-0 z-0 overflow-hidden max-w-full">
+      <div className="absolute inset-0 z-0 overflow-hidden max-w-full pointer-events-none">
         <div
-          className={`absolute inset-0 transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isLoaded
-            ? "[clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)] opacity-100 scale-100"
-            : "[clip-path:polygon(50%_10%,60%_50%,50%_90%,40%_50%)] opacity-60 scale-105"
-            }`}
+          className={`absolute inset-0 transition-all duration-[1000ms] ease-[cubic-bezier(0.25,1,0.35,1)] ${
+            isClipped
+              ? "[clip-path:polygon(50%_0%,85%_50%,50%_100%,15%_50%)] opacity-90 scale-105"
+              : "[clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)] opacity-100 scale-100"
+          }`}
         >
           <Image
             src="/heroWrap.jpg"
@@ -41,39 +45,51 @@ export default function FoundationHero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/30" />
       </div>
 
-      {/* Availability Widget (Exact replicate of reference Image 2) */}
-      <div className="absolute right-[6%] top-24 z-20 hidden md:flex items-center gap-4">
-        {/* 12-point star icon */}
-        <svg
-          viewBox="0 0 24 24"
-          className="h-7 w-7 text-[#f3dbc7] animate-[spin_16s_linear_infinite]"
-        >
-          <path
-            fill="currentColor"
-            d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"
-          />
-        </svg>
+      {/* Availability Widget (triggers background curtain transition on hover) */}
+      <div
+        id="availability-widget"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="absolute right-[6%] top-24 z-20 hidden md:flex flex-col items-end gap-2 cursor-pointer select-none group"
+      >
+        <div className="flex items-center gap-4">
+          {/* 12-point star icon */}
+          <svg
+            viewBox="0 0 24 24"
+            className="h-7 w-7 text-[#f3dbc7] animate-[spin_16s_linear_infinite]"
+          >
+            <path
+              fill="currentColor"
+              d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"
+            />
+          </svg>
 
-        {/* White Pill with Oval Cutout "07" */}
-        <div className="relative flex h-14 w-28 items-center justify-center rounded-full bg-[#f5eee6] px-2 shadow-xl">
-          <div className="flex h-9 w-20 items-center justify-center rounded-full border-2 border-black/20 font-sans text-xl font-extrabold text-black">
-            07
+          {/* White Pill with Oval Cutout "07" */}
+          <div className="relative flex h-14 w-28 items-center justify-center rounded-full bg-[#f5eee6] px-2 shadow-xl transition-transform duration-300 group-hover:scale-105">
+            <div className="flex h-9 w-20 items-center justify-center rounded-full border-2 border-black/20 font-sans text-xl font-extrabold text-black">
+              07
+            </div>
+          </div>
+
+          {/* Diagonal White Slash */}
+          <div className="h-16 w-3.5 rotate-[28deg] rounded-sm bg-[#f5eee6]" />
+
+          {/* Text Stack */}
+          <div className="flex flex-col text-left pl-1">
+            <span className="font-serif-accent text-lg italic text-[#f3dbc7] leading-none">
+              sep
+            </span>
+            <span className="font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#f5eee6] leading-tight mt-1">
+              available
+              <br />
+              for work
+            </span>
           </div>
         </div>
 
-        {/* Diagonal White Slash */}
-        <div className="h-16 w-3.5 rotate-[28deg] rounded-sm bg-[#f5eee6]" />
-
-        {/* Text Stack */}
-        <div className="flex flex-col text-left pl-1">
-          <span className="font-serif-accent text-lg italic text-[#f3dbc7] leading-none">
-            sep
-          </span>
-          <span className="font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#f5eee6] leading-tight mt-1">
-            available
-            <br />
-            for work
-          </span>
+        {/* Subtitle hint matching reference site on hover */}
+        <div className="text-[11px] font-mono text-[#f3dbc7]/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pr-1">
+          ☺ It&apos;s a fake availability. Contact me to check my actual status
         </div>
       </div>
 
@@ -89,7 +105,10 @@ export default function FoundationHero() {
           id="hero-heading"
           className="mt-1 font-display-condensed text-[clamp(3.5rem,11.5vw,10.5rem)] font-black uppercase leading-[0.82] tracking-tighter text-[#f5eee6] break-words"
         >
-          <span className="block font-mono text-xs font-normal uppercase tracking-[0.35em] text-[#f5eee6]/60 mb-2 not-italic" style={{ fontSize: "clamp(0.6rem, 1.2vw, 0.85rem)", letterSpacing: "0.3em", fontFamily: "inherit" }}>
+          <span
+            className="block font-mono text-xs font-normal uppercase tracking-[0.35em] text-[#f5eee6]/60 mb-2 not-italic"
+            style={{ fontSize: "clamp(0.6rem, 1.2vw, 0.85rem)", letterSpacing: "0.3em", fontFamily: "inherit" }}
+          >
             Kashif Nehal
           </span>
           Designer
