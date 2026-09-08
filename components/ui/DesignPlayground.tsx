@@ -44,7 +44,7 @@ const TYPO_PRESETS: TypoPreset[] = [
     displayTracking: "-0.01em",
     body: "var(--font-cormorant), 'Cormorant Garamond', serif",
     accent: "var(--font-instrument), 'Instrument Serif', serif",
-    mono: "var(--font-geist-mono), 'Geist Mono', monospace",
+    mono: "var(--font-cormorant), 'Cormorant Garamond', serif",
   },
   {
     id: "vintage",
@@ -55,7 +55,7 @@ const TYPO_PRESETS: TypoPreset[] = [
     displayTracking: "-0.02em",
     body: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
     accent: "var(--font-playfair), 'Playfair Display', serif",
-    mono: "var(--font-geist-mono), 'Geist Mono', monospace",
+    mono: "var(--font-oswald), 'Oswald', sans-serif",
   },
   {
     id: "minimal",
@@ -77,7 +77,7 @@ const TYPO_PRESETS: TypoPreset[] = [
     displayTracking: "-0.03em",
     body: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
     accent: "var(--font-instrument), 'Instrument Serif', serif",
-    mono: "var(--font-geist-mono), 'Geist Mono', monospace",
+    mono: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
   },
 ];
 

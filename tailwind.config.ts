@@ -18,9 +18,12 @@ const config: Config = {
         "border-token": "var(--color-border)",
       },
       fontFamily: {
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "sans-serif"],
-        body: ["var(--font-body)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        serif: ["var(--font-accent)", "serif"],
+        accent: ["var(--font-accent)", "serif"],
       },
       spacing: {
         gutter: "var(--space-gutter)",

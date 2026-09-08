@@ -170,4 +170,38 @@ test.describe("Design Studio — Customizer Panel", () => {
     const stored = await page.evaluate(() => localStorage.getItem("portfolio_font_theme"));
     expect(stored).toBe("vintage");
   });
+
+  // ─── 12. Site-wide body copy, buttons & table font updates ────────────
+  test("body copy, contact button, and award table inherit active font theme", async ({ page }) => {
+    await page.locator("#design-playground-toggle").click();
+    const panel = page.locator("#design-playground-panel");
+    await panel.getByRole("button", { name: /Luxury & Editorial/ }).click();
+
+    // Bio paragraph in Intro section
+    const bioFont = await page.locator("#intro p").evaluate((el) => window.getComputedStyle(el).fontFamily);
+    expect(bioFont).toContain("Cormorant Garamond");
+
+    // Contact Me button
+    const contactBtnFont = await page.locator("#contact a").first().evaluate((el) => window.getComputedStyle(el).fontFamily);
+    expect(contactBtnFont).toContain("Cormorant Garamond");
+
+    // Recognition Award Title
+    const awardTitleFont = await page.locator("#awards div.col-span-4").first().evaluate((el) => window.getComputedStyle(el).fontFamily);
+    expect(awardTitleFont).toContain("Cormorant Garamond");
+  });
+
+  // ─── 13. Project Detail Page (/projects/viceversa) font inheritance ───
+  test("project detail page (/projects/viceversa) inherits active font theme", async ({ page }) => {
+    // Apply font theme on home page
+    await page.locator("#design-playground-toggle").click();
+    const panel = page.locator("#design-playground-panel");
+    await panel.getByRole("button", { name: /Luxury & Editorial/ }).click();
+
+    // Navigate to project detail page
+    await page.goto("/projects/viceversa");
+    await page.waitForLoadState("networkidle");
+
+    const headerFont = await page.locator("h1").evaluate((el) => window.getComputedStyle(el).fontFamily);
+    expect(headerFont).toContain("Cormorant Garamond");
+  });
 });
