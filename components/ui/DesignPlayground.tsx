@@ -238,7 +238,7 @@ export default function DesignPlayground() {
     <aside
       ref={panelRef}
       aria-label="Design Playground Studio"
-      className="fixed bottom-5 right-5 z-50"
+      className="hidden md:block fixed bottom-5 right-5 z-50"
       style={{
         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         filter: "none",
@@ -249,7 +249,7 @@ export default function DesignPlayground() {
         <button
           id="design-playground-toggle"
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2.5 rounded-full border border-white/20 px-4 py-2.5 shadow-2xl backdrop-blur-md transition-all hover:scale-105 hover:border-white/50 focus:outline-none"
+          className="hidden md:flex items-center gap-2.5 rounded-full border border-white/20 px-4 py-2.5 shadow-2xl backdrop-blur-md transition-all hover:scale-105 hover:border-white/50 focus:outline-none"
           style={{
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             backgroundColor: "rgba(13, 13, 16, 0.9)",

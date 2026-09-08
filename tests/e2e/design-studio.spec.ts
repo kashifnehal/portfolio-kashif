@@ -10,10 +10,16 @@ test.describe("Design Studio — Customizer Panel", () => {
   });
 
   // ─── 1. Toggle button ──────────────────────────────────────────────────
-  test("toggle button is visible in the bottom-right", async ({ page }) => {
+  test("toggle button is visible in the bottom-right on desktop", async ({ page }) => {
     const toggle = page.locator("#design-playground-toggle");
     await expect(toggle).toBeVisible();
     await expect(toggle).toContainText("Design Studio");
+  });
+
+  test("toggle button is hidden on mobile screens", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    const toggle = page.locator("#design-playground-toggle");
+    await expect(toggle).not.toBeVisible();
   });
 
   // ─── 2. Open / close panel & click outside ────────────────────────────
